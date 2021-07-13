@@ -21,3 +21,15 @@ after_success:
   - docker push zafatar/multi-container-nginx
   - docker push zafatar/multi-container-server
   - docker push zafatar/multi-container-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-central-1'
+  app: 'multi-container-app'
+  env: 'Multicontainerapp-env'
+  bucket_name: 'elasticbeanstalk-eu-central-1-569739914161'
+  bucket_path: 'multi-container-app'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
