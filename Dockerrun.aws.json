@@ -1,23 +1,26 @@
 {
-    "AWSEBDockerrunVersion": 2,
+    "AWSEBDockerrunVersion": 3,
     "containerDefinitions": [
         {
             "name": "client",
             "image": "zafatar/multi-container-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory": 256
         },
         {
             "name": "server",
             "image": "zafatar/multi-container-server",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 256
         },
         {
             "name": "worker",
             "image": "zafatar/multi-container-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 256
         },
         {
             "name": "nginx",
@@ -29,7 +32,8 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"]
+            "links": ["client", "server"],
+            "memory": 256
         }
     ]
 }
